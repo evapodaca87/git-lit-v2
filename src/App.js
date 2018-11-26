@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import LoginButton from './Components/loginbutton.js';
-import SignUpButton from './Components/signupbutton.js';
+import HomeTabs from './Components/hometabs.js';
 
 class App extends Component {
     render() {
@@ -23,8 +22,9 @@ class App extends Component {
                 </p>
                 <p>Signing up is easy! & FREE!</p>
                 <div className='buttons'>
-                    <LoginButton />
-                    <SignUpButton />
+                    <div className='form'>
+                        <HomeTabs />
+                    </div>
                 </div>
             </div>
         );

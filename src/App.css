@@ -9,3 +9,15 @@ html {
 .logo {
     opacity: 0.1;
 }
+
+.form {
+  align-content: center;
+  justify-content: center;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.ui.secondary.menu {
+  display: flex;
+  justify-content: center;
+}
