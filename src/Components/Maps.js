@@ -4,7 +4,11 @@ import GoogleMapReact from 'google-map-react'
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class Maps extends Component {
-  static defaultProps = {
+    state = {
+        myLocation: { lat: 39.742043 , lng: -104.991531 } 
+    }
+  
+    static defaultProps = {
     center: {
       lat: 39.742043,
       lng: -104.991531
@@ -15,7 +19,7 @@ class Maps extends Component {
   render() {
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '60vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM' }}
           defaultCenter={this.props.center}
