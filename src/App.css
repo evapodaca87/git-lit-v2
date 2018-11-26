@@ -1,5 +1,5 @@
 html {
-    background-color: grey;
+    /* background-color: grey; */
 }
 
 .App {
@@ -32,4 +32,18 @@ header {
 .logoHead {
   width: 10vw;
   height: 20vh;
+}
+
+.ui.fitted.toggle.checkbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.map {
+  margin: auto;
+  width: 90vw;
+  height: 400px;
+  background-color: brown;
+  align-items: center;
 }
