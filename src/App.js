@@ -1,5 +1,7 @@
+
 import React, { Component } from 'react';
 import './App.css';
+import GoogleMapsContainer from './Components/GoogleMapsContainer'
 import HomeTabs from './Components/hometabs.js';
 import Home from './Home.js'
 
@@ -25,6 +27,7 @@ class App extends Component {
                 <div className='buttons'>
                     <div className='form'>
                         <HomeTabs />
+                        <GoogleMapsContainer />
                     </div>
                 </div>
                 <Home />
@@ -33,4 +36,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default App
