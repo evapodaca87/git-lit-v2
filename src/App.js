@@ -27,7 +27,7 @@ class App extends Component {
                         <HomeTabs />
                     </div>
                 </div>
-                {/* <Home /> */}
+                <Home />
             </div>
         );
     }
