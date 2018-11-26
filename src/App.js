@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import HomeTabs from './Components/hometabs.js';
+import Home from './Home.js'
 
 class App extends Component {
     render() {
@@ -26,6 +27,7 @@ class App extends Component {
                         <HomeTabs />
                     </div>
                 </div>
+                {/* <Home /> */}
             </div>
         );
     }
