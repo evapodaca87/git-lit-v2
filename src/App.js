@@ -1,12 +1,13 @@
+
 import React, { Component } from 'react'
 import './App.css'
-import Maps from './Components/Maps'
+import GoogleMapsContainer from './Components/GoogleMapsContainer'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-          <Maps />
+          <GoogleMapsContainer />
       </div>
     )
   }
