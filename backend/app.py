@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask import request
 
 # setting up app and db
 app = Flask(__name__)
@@ -48,6 +49,23 @@ class Bars(db.Model):
 @app.route('/')
 def index():
     return render_template('home.html')
+
+
+@app.route('/new_user')
+def new_user():
+    return render_template('new_user.html')
+
+
+@app.route('/post_user', methods=['POST'])
+def post_user():
+    user = People(request.form['first'],
+                  request.form['last'],
+                  request.form['email'],
+                  request.form['username'],
+                  request.form['password'])
+    db.session.add(user)
+    db.session.commit()
+    return '🐍'
 
 
 @app.route('/about')
