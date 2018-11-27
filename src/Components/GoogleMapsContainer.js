@@ -8,7 +8,8 @@ class GoogleMapsContainer extends React.Component{
       this.state = {
         showingInfoWindow: false,
         activeMarker: {},
-        selectedPlace: {}
+        selectedPlace: {},
+        initialCenter: { lat: 39.75752, lng: -105.00687 }
       }
   }
 
@@ -44,19 +45,22 @@ render() {
         google = { this.props.google }
         onClick = { this.onMapClick }
         zoom = { 14 }
-        initialCenter = {{ lat: 39.7392, lng: -104.9903 }}
+        initialCenter = {this.state.initialCenter}
+
       >
         <Marker
           onClick = { this.onMarkerClick }
           title = { 'Changing Colors Garage' }
-          position = {{ lat: 39.7392, lng: -104.9903 }}
+          position = {this.state.initialCenter}
           name = { 'Changing Colors Garage' }
         />
-        <InfoWindow
-          marker = { this.state.activeMarker }
-          visible = { this.state.showingInfoWindow }
-          name={'Current location'}
-        />
+          <InfoWindow
+            marker = { this.state.activeMarker }
+            visible = { this.state.showingInfoWindow }>
+            <div>
+              <h3>Current Location</h3>
+            </div>
+          </InfoWindow>
         </Map>
       );
     }
