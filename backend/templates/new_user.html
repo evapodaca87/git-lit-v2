@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <form method="post" action="/post_user">
+    <label>First Name:</label>
+    <input id="first" name="first" type="text" />
+    <label>last Name:</label>
+    <input id="last" name="last" type="text" />
+    <label>email:</label>
+    <input id="email" name="email" type="text" />
+    <label>username:</label>
+    <input id="username" name="username" type="text" />
+    <label>password:</label>
+    <input id="password" name="password" type="text" />
+    <input type="submit" />
+  </form>
+{% endblock %}
