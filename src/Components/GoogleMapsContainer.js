@@ -1,53 +1,59 @@
-import React from 'react'
+import React,{Component} from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
-class GoogleMapsContainer extends React.Component{
+class GoogleMapsContainer extends Component {
+constructor(props){
+  super(props)
+    this.state={
+           showingInfoWindow: false,
+           activeMarker: {},
+           selectedPlace: {},
+           initialCenter: {
+             lat:39 ,
+             lng:-104
+           }
+     }
+}
 
- state = {
-        showingInfoWindow: false,
-        activeMarker: {},
-        selectedPlace: {},
-        initialCenter: { lat: 39.75752, lng: -105.00687 }
-  }
+  // fetchPlaces = (mapProps, map) => {
+  //   console.log(this.state.initialCenter.lat, this.state.initialCenter.lng);
+  //   fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=(${this.state.initialCenter.lat}),(${this.state.initialCenter.lng})&radius=5000&keyword=bars&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
+  //     .then(
+  //       function(response){
+  //         response.json()
+  //           .then(function(data) {
+  //             console.log(data)
+  //           })
+  //       }
+  //     )
+  //     }
 
   async componentDidMount() {
-    const { lat, lng } = await this.getcurrentLocation()
-    this.setState({ initialCenter: { lat, lng }})
+    console.log("component did mount ran")
+    const coords = await this.getCurrentLocation()
+    console.log("coords",coords)
   }
 
 
-  // async fetchPlaces() {
-  //   const response = await fetch('https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM')
-  //   const places = await response.json()
-  //   console.log(places)
-    // this.setState({places: places})
-  // }
-
-  fetchPlaces = (mapProps, map) => {
-    fetch('https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM')
-      .then(
-        function(response){
-          response.json()
-            .then(function(data) {
-              console.log(data)
-            })
-        }
-      )
-      }
-
-   getcurrentLocation = () => {
+   getCurrentLocation = () => {
     if (navigator && navigator.geolocation) {
-      return new Promise((resolve) => {
-        navigator.geolocation.getCurrentPosition(position => {
-          const coords = position.coords
-          resolve({
-            lat: coords.latitude,
-            lng: coords.longitude
-          })
-        })
-      })
+      console.log('getting location')
+        navigator.geolocation.getCurrentPosition(
+          position => {
+            console.log("getCurrentPosition running (location callback)")
+            this.setState({initialCenter:{
+              lat: position.coords.latitude,
+              lng: position.coords.longitude}
+            })
+            console.log("initial center set", this.state.initialCenter)
+          }, error =>
+            {console.log(error)}
+        )
+      }
+    else{
+      console.log("initial center not set")
+      return { lat: 27, lng: -100 }
     }
-    return { lat: 39.75752, lng: -105.00687 }
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -85,6 +91,7 @@ render() {
         zoom = { 14 }
         initialCenter = {this.state.initialCenter}>
 
+
         <Marker
           onClick = { this.onMarkerClick }
           title = { 'Changing Colors Garage' }
@@ -98,7 +105,6 @@ render() {
               <h3>Current Location</h3>
             </div>
           </InfoWindow>
-          {this.fetchPlaces()}
         </Map>
       </div>
     )
