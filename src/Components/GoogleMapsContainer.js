@@ -3,10 +3,13 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
 
 class GoogleMapsContainer extends React.Component{
 
-  state= {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
+  constructor(props) {
+      super(props);
+      this.state = {
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {}
+      }
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -27,7 +30,7 @@ class GoogleMapsContainer extends React.Component{
 
 render() {
   const style = {
-    width: '50vw',
+    width: '100vw',
     height: '75vh',
     'marginLeft': 'auto',
     'marginRight': 'auto'
@@ -41,17 +44,18 @@ render() {
         google = { this.props.google }
         onClick = { this.onMapClick }
         zoom = { 14 }
-        initialCenter = {{ lat: 39.648209, lng: -75.711185 }}
+        initialCenter = {{ lat: 39.7392, lng: -104.9903 }}
       >
         <Marker
           onClick = { this.onMarkerClick }
           title = { 'Changing Colors Garage' }
-          position = {{ lat: 39.648209, lng: -75.711185 }}
+          position = {{ lat: 39.7392, lng: -104.9903 }}
           name = { 'Changing Colors Garage' }
         />
         <InfoWindow
           marker = { this.state.activeMarker }
           visible = { this.state.showingInfoWindow }
+          name={'Current location'}
         />
         </Map>
       );
