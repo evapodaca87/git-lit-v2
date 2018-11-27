@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import ToggleBox from './Components/Toggle.js';
+import Slide from './Components/slide.js';
+import { Rating } from 'semantic-ui-react'
+
 
 class Home extends Component {
     render() {
@@ -11,8 +14,8 @@ class Home extends Component {
                         className='logoHead'
                         src='http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-default-picture-4.png'
                     />
-                        <ToggleBox />
-                    
+                      <ToggleBox />
+
 
                     <img
                         className='logoHead'
@@ -20,6 +23,19 @@ class Home extends Component {
                     />
                 </header>
                 <p className='map'>Giant map goes here</p>
+                <Slide />
+                <h3>Bar Review</h3>
+                <div className="barReview">
+                  <p> Bar Name</p>
+                  <p> This bar was a total peice of shit. It's no village in. </p>
+                  <div className="rating">
+                    <i class="trash icon"></i>
+                    <Rating icon='star' defaultRating={3} maxRating={5} />
+                    <i class="fire icon"></i>
+                  </div>
+                </div>
+
+
             </div>
         );
     }

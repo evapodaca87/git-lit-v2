@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 import HomeTabs from './Components/hometabs.js';
 import Home from './Home.js'
+import Profile from './Profile.js'
+
+
 
 class App extends Component {
+
     render() {
+
         return (
+
             <div className='App'>
                 <div className='head'>
                     <img
@@ -25,9 +31,15 @@ class App extends Component {
                 <div className='buttons'>
                     <div className='form'>
                         <HomeTabs />
+                        <div>
+
+                   </div>
                     </div>
                 </div>
-                <Home />
+
+              <Home />
+              <Profile />
+
             </div>
         );
     }
