@@ -1,18 +1,20 @@
 import React,{Component} from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
+
 class GoogleMapsContainer extends Component {
 constructor(props){
   super(props)
     this.state={
-           showingInfoWindow: false,
-           activeMarker: {},
-           selectedPlace: {},
-           initialCenter: {
-             lat:39 ,
-             lng:-104
-           }
-     }
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+      initialCenter: {
+        lat:39 ,
+        lng:-104
+      },
+      toggleMap: false,
+    }
 }
 
   // fetchPlaces = (mapProps, map) => {
@@ -79,7 +81,7 @@ render() {
     'marginLeft': 'auto',
     'marginRight': 'auto'
   }
-
+ 
     return (
       <div>
         <Map
