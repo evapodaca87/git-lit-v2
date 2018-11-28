@@ -25,6 +25,7 @@ componentDidMount () {
 // }
 
 onMarkerClick = (props, marker, e) => {
+  console.log(props)
   this.setState({
     selectedPlace: props,
     activeMarker: marker,
@@ -58,6 +59,9 @@ onMapClick = (props) => {
                 title = { bar.name }
                 position = { bar.geometry.location }
                 name = { bar.name }
+                rating = {bar.rating}
+                address = {bar.vicinity}
+                openNow = {bar.opening_hours.open_now}
               />
           )
         })
@@ -97,6 +101,9 @@ render() {
             visible = { this.state.showingInfoWindow }>
             <div>
               <h3>{this.state.selectedPlace.name}</h3>
+              <p>Litness: {this.state.selectedPlace.rating}</p>
+              <p>{this.state.selectedPlace.address}</p>
+              <p> {this.state.selectedPlace.openNow ? "Open" : "Closed"}</p>
             </div>
           </InfoWindow>
             {this.state.markers}
