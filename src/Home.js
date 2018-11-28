@@ -17,7 +17,6 @@ class Home extends Component {
     }
 
     async componentDidMount() {
-        console.log("component did mount ran")
         const coords = await this.getCurrentLocation()
         console.log("coords",coords)
       }
@@ -25,21 +24,17 @@ class Home extends Component {
     
        getCurrentLocation = () => {
         if (navigator && navigator.geolocation) {
-          console.log('getting location')
             navigator.geolocation.getCurrentPosition(
               position => {
-                console.log("getCurrentPosition running (location callback)")
                 this.setState({initialCenter:{
                   lat: position.coords.latitude,
                   lng: position.coords.longitude}
                 })
-                console.log("initial center set", this.state.initialCenter)
               }, error =>
                 {console.log(error)}
             )
           }
         else{
-          console.log("initial center not set")
           return { lat: 27, lng: -100 }
         }
       }
