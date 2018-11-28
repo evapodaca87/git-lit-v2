@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
-import './App.css'
+import React, { Component } from 'react';
+import './App.css';
+import Slide from './Components/slide.js';
+import { Rating } from 'semantic-ui-react'
 import GoogleMapsContainer from './Components/GoogleMapsContainer.js'
 import { Checkbox } from 'semantic-ui-react'
+
 
 class Home extends Component {
 
@@ -62,10 +65,23 @@ class Home extends Component {
                         src='https://files.slack.com/files-pri/T1T555TL0-FEBL8TWRX/screen_shot_2018-11-26_at_11.26.57_am.png'
                     />
                 </header>
+
                 {showMap && <GoogleMapsContainer initialCenter={this.state.initialCenter} />}
+                <Slide />
+                <h3>Bar Review</h3>
+                <div className="barReview">
+                  <p> Bar Name</p>
+                  <p> This bar was a total peice of shit. It's no village in. </p>
+                  <div className="rating">
+                    <i class="trash icon"></i>
+                    <Rating icon='star' defaultRating={3} maxRating={5} />
+                    <i class="fire icon"></i>
+                  </div>
+                </div>
             </div>
         );
     }
 }
+
 
 export default Home;
