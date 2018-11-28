@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React,{Component, createContext} from 'react'
 import {Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 
 
@@ -8,42 +8,56 @@ constructor(props){
     this.state={
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {}
+      selectedPlace: {},
+      markers: []
     }
 }
 
+componentDidMount () {
+  this.fetchPlaces()
+}
 
-  fetchPlaces = (mapProps, map) => {
-    const lat = this.props.initialCenter.lat
-    const lng = this.props.initialCenter.lng
-    console.log(this.props.initialCenter.lat, this.props.initialCenter.lng);
-    fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
-      .then(
-        function(response){
-          response.json()
-            .then(function(data) {
-              console.log(data)
-            })
-        }
-      )
-      }
-  
-
-  onMarkerClick = (props, marker, e) => {
+onMarkerClick = (props, marker, e) => {
+  this.setState({
+    selectedPlace: props,
+    activeMarker: marker,
+    showingInfoWindow: true
+  });
+}
+onMapClick = (props) => {
+  if (this.state.showingInfoWindow) {
     this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: false,
+      activeMarker: null
     });
   }
-  onMapClick = (props) => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  }
+}
+
+  fetchPlaces = (mapProps, map) => {
+    const context = this
+    const lat = this.props.initialCenter.lat
+    const lng = this.props.initialCenter.lng
+    console.log(this.props.initialCenter.lat, this.props.initialCenter.lng)
+    return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=restaurant&keyword=bar&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
+      .then(response => response.json())
+      .then(function(data) {
+        console.log("data",data.results)
+        const markers = data.results.map(bar => {
+          return (
+              <Marker
+                key = { bar.id }
+                onClick = { context.onMarkerClick }
+                title = { bar.name }
+                position = { bar.geometry.location }
+                name = { bar.name }
+              />
+          )
+        })
+        context.setState({markers})
+      }     
+    )}
+  
+        
 
 render() {
   const style = {
@@ -53,8 +67,9 @@ render() {
     'marginRight': 'auto'
   }
  
-    return (
-      <div>
+  console.log('fetch', this.fetchPlaces())
+  return (
+    <div>
         <Map
         item
         xs = { 12 }
@@ -63,15 +78,13 @@ render() {
         onClick = { this.onMapClick }
         zoom = { 14 }
         initialCenter = {this.props.initialCenter}
-        fetchPlaces = {this.fetchPlaces()}>
-
-
+        >
         <Marker
           onClick = { this.onMarkerClick }
           title = { 'Changing Colors Garage' }
           position = {this.props.initialCenter}
           name = { 'Changing Colors Garage' }
-        />
+          />
           <InfoWindow
             marker = { this.state.activeMarker }
             visible = { this.state.showingInfoWindow }>
@@ -79,6 +92,7 @@ render() {
               <h3>Current Location</h3>
             </div>
           </InfoWindow>
+            {this.state.markers}
         </Map>
       </div>
     )
