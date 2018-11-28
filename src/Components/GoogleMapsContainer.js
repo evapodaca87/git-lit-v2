@@ -12,18 +12,22 @@ constructor(props){
     }
 }
 
-  // fetchPlaces = (mapProps, map) => {
-  //   console.log(this.state.initialCenter.lat, this.state.initialCenter.lng);
-  //   fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=(${this.state.initialCenter.lat}),(${this.state.initialCenter.lng})&radius=5000&keyword=bars&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
-  //     .then(
-  //       function(response){
-  //         response.json()
-  //           .then(function(data) {
-  //             console.log(data)
-  //           })
-  //       }
-  //     )
-  //     }
+
+  fetchPlaces = (mapProps, map) => {
+    const lat = this.props.initialCenter.lat
+    const lng = this.props.initialCenter.lng
+    console.log(this.props.initialCenter.lat, this.props.initialCenter.lng);
+    fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
+      .then(
+        function(response){
+          response.json()
+            .then(function(data) {
+              console.log(data)
+            })
+        }
+      )
+      }
+  
 
   onMarkerClick = (props, marker, e) => {
     this.setState({
@@ -58,7 +62,8 @@ render() {
         google = { this.props.google }
         onClick = { this.onMapClick }
         zoom = { 14 }
-        initialCenter = {this.props.initialCenter}>
+        initialCenter = {this.props.initialCenter}
+        fetchPlaces = {this.fetchPlaces()}>
 
 
         <Marker
