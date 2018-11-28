@@ -9,19 +9,27 @@ constructor(props){
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      markers: []
+      markers: [],
+      }
     }
-}
+
 
 componentDidMount () {
   this.fetchPlaces()
 }
 
+// showBarName = (e) =>{
+//   e.preventDefault()
+//   const nombre = e.target.name
+//   console.log(nombre)
+// }
+
 onMarkerClick = (props, marker, e) => {
   this.setState({
     selectedPlace: props,
     activeMarker: marker,
-    showingInfoWindow: true
+    showingInfoWindow: true,
+
   });
 }
 onMapClick = (props) => {
@@ -38,7 +46,7 @@ onMapClick = (props) => {
     const lat = this.props.initialCenter.lat
     const lng = this.props.initialCenter.lng
     console.log(this.props.initialCenter.lat, this.props.initialCenter.lng)
-    return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=restaurant&keyword=bar&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
+     fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=restaurant&keyword=bar&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
       .then(response => response.json())
       .then(function(data) {
         console.log("data",data.results)
@@ -53,10 +61,9 @@ onMapClick = (props) => {
               />
           )
         })
-        context.setState({markers})
-      }     
-    )}
-      
+      context.setState({markers})
+  })
+}
 
 render() {
   const style = {
@@ -65,7 +72,7 @@ render() {
     'marginLeft': 'auto',
     'marginRight': 'auto'
   }
- 
+
   return (
     <div>
         <Map
@@ -74,24 +81,26 @@ render() {
         style = { style }
         google = { this.props.google }
         onClick = { this.onMapClick }
-        zoom = { 16 }
+        zoom = { 14}
         initialCenter = {this.props.initialCenter}
         onReady={this.fetchPlaces}
         >
         <Marker
           onClick = { this.onMarkerClick }
-          title = { 'Changing Colors Garage' }
+          title = { 'Current Location' }
           position = {this.props.initialCenter}
-          name = { 'Changing Colors Garage' }
+          name = { 'Current Location' }
           />
           <InfoWindow
+            // position = {this.props.initialCenter}
             marker = { this.state.activeMarker }
             visible = { this.state.showingInfoWindow }>
             <div>
-              <h3>Current Location</h3>
+              <h3>{this.state.selectedPlace.name}</h3>
             </div>
           </InfoWindow>
             {this.state.markers}
+            {/* {this.state.infoWindows} */}
         </Map>
       </div>
     )
