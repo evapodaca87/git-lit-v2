@@ -6,7 +6,7 @@ import { Checkbox } from 'semantic-ui-react'
 class Home extends Component {
 
     state = {
-        showMap: true,
+        showMap: false,
         initialCenter: {
             lat:39 ,
             lng:-104
@@ -36,9 +36,9 @@ class Home extends Component {
         }
       }
 
-    // toggleMap = () => {
-    //     this.setState({showMap: !this.state.showMap})
-    // }
+    toggleMap = () => {
+        this.setState({showMap: !this.state.showMap})
+    }
 
     render() {
         const showMap = this.state.showMap
