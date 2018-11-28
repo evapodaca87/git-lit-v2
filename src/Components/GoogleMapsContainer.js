@@ -56,8 +56,7 @@ onMapClick = (props) => {
         context.setState({markers})
       }     
     )}
-  
-        
+      
 
 render() {
   const style = {
@@ -67,7 +66,6 @@ render() {
     'marginRight': 'auto'
   }
  
-  console.log('fetch', this.fetchPlaces())
   return (
     <div>
         <Map
@@ -76,8 +74,9 @@ render() {
         style = { style }
         google = { this.props.google }
         onClick = { this.onMapClick }
-        zoom = { 14 }
+        zoom = { 16 }
         initialCenter = {this.props.initialCenter}
+        onReady={this.fetchPlaces}
         >
         <Marker
           onClick = { this.onMarkerClick }
