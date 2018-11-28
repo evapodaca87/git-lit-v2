@@ -15,7 +15,7 @@ class App extends Component {
                 <div className='head'>
                     <img
                         className='logo'
-                        src='https://files.slack.com/files-pri/T1T555TL0-FEBL8TWRX/screen_shot_2018-11-26_at_11.26.57_am.png'
+                        src='/pictures/gitlit.png'
                     />
                 </div>
                 <p>

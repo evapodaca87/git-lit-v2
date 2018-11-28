@@ -8,8 +8,8 @@ constructor(props){
     this.state={
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {}
-    }
+      selectedPlace: {},
+   };
 }
 
   // fetchPlaces = (mapProps, map) => {
@@ -41,6 +41,10 @@ constructor(props){
     }
   }
 
+
+
+
+
 render() {
   const style = {
     width: '100vw',
@@ -48,9 +52,9 @@ render() {
     'marginLeft': 'auto',
     'marginRight': 'auto'
   }
- 
+
     return (
-      <div>
+      <div className="resize">
         <Map
         item
         xs = { 12 }
@@ -67,6 +71,7 @@ render() {
           position = {this.props.initialCenter}
           name = { 'Changing Colors Garage' }
         />
+
           <InfoWindow
             marker = { this.state.activeMarker }
             visible = { this.state.showingInfoWindow }>
@@ -74,6 +79,7 @@ render() {
               <h3>Current Location</h3>
             </div>
           </InfoWindow>
+
         </Map>
       </div>
     )
