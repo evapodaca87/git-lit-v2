@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import GoogleMapsContainer from './Components/GoogleMapsContainer';
 import HomeTabs from './Components/hometabs.js';
 import Home from './Home.js';
 
