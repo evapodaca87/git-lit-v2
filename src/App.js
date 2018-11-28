@@ -5,7 +5,6 @@ import Home from './Home.js'
 import Profile from './Profile.js'
 
 
-
 class App extends Component {
 
     render() {
