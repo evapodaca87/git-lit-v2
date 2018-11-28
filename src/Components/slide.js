@@ -20,6 +20,7 @@ class SimpleSlider extends React.Component {
 
   handleChange = (event, value) => {
     this.setState({ value });
+
   };
 
   render() {
@@ -37,7 +38,7 @@ class SimpleSlider extends React.Component {
           onChange={this.handleChange}
         />
       </div>
-      Miles{this.state.value}
+      Miles {Math.floor(this.state.value)}
       </div>
     );
   }
