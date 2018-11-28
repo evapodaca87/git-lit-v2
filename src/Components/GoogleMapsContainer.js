@@ -101,13 +101,12 @@ render() {
             visible = { this.state.showingInfoWindow }>
             <div>
               <h3>{this.state.selectedPlace.name}</h3>
-              <p>Litness: {this.state.selectedPlace.rating}</p>
-              <p>{this.state.selectedPlace.address}</p>
+              <p>Litness: { this.state.selectedPlace.rating || 'Unavailable' }</p>
+              <p> {this.state.selectedPlace.address}</p>
               <p> {this.state.selectedPlace.openNow ? "Open" : "Closed"}</p>
             </div>
           </InfoWindow>
             {this.state.markers}
-            {/* {this.state.infoWindows} */}
         </Map>
       </div>
     )
