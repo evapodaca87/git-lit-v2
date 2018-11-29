@@ -3,6 +3,7 @@ import './App.css'
 import GoogleMapsContainer from './Components/GoogleMapsContainer.js'
 import { Button } from 'semantic-ui-react'
 
+
 class Home extends Component {
 
     state = {
@@ -59,8 +60,9 @@ class Home extends Component {
                     />
                 </header>
                 {showMap && <GoogleMapsContainer initialCenter={this.state.initialCenter} />}
-            </div>
-        );
+        </div>
+        
+        )
     }
 }
 

@@ -62,3 +62,15 @@ header {
     width: 55px;
     height: 55px;
 }
+
+.resize {
+    height: 300px;
+}
+
+.barReview{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right:10%;
+  }
