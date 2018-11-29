@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header,Checkbox,Modal, Form, Icon } from 'semantic-ui-react'
+import { Button, Modal, Form } from 'semantic-ui-react'
 
 class Submit extends Component {
   state = { open: false }

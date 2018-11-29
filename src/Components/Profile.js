@@ -17,7 +17,7 @@ class Profile extends Component {
                     </Link>
                 </header>
                 <div>
-                    <img className='logoHead profile-pic' src={anh} />
+                    <img alt="logo" className='logoHead profile-pic' src={anh} />
                 </div>
                 <div className='Profilecontainer'>
                     <div>
@@ -28,7 +28,7 @@ class Profile extends Component {
                 <div>
                     <h1>GitLit History</h1>
                 </div>
-                <img src='https://via.placeholder.com/800x700' />
+                <img alt="pic" src='https://via.placeholder.com/800x700' />
             </div>
         );
     }

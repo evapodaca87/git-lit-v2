@@ -51,6 +51,7 @@ class Home extends Component {
       <div className="App2">
         <header>
         <Link to="/Profile"><img
+            alt="profile"
             className="logoHead profile-pic"
             src={anh}
           />
@@ -63,6 +64,7 @@ class Home extends Component {
           />
 
           <img
+            alt="logo"
             className="logoHead"
             src="https://files.slack.com/files-pri/T1T555TL0-FEBL8TWRX/screen_shot_2018-11-26_at_11.26.57_am.png"
           />
