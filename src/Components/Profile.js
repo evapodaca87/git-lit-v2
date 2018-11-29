@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
+import { Header, Image, Icon, Rating } from 'semantic-ui-react';
+
 import '../App.css';
 
 class Profile extends Component {
     render() {
         return (
-            <div className='App3'>
-                <header>
-                    <img
-                        className='logoHead'
-                        src='https://files.slack.com/files-pri/T1T555TL0-FEBL8TWRX/screen_shot_2018-11-26_at_11.26.57_am.png'
-                    />
-                </header>
-                <div>
-                    <img
-                        className='logoHead'
-                        src='http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-default-picture-4.png'
-                    />
+            <div>
+                <div className='profileHeader'>
+                    <Header as='h2'>
+                        <Image circular src='pictures/gitlit.png' /> Return Home
+                    </Header>
                 </div>
-                <div className='Profilecontainer'>
-                    <div>
-                        <p>Name</p>
+
+                <div className='profilePicture'>
+                    <Image className='picture' src='pictures/anh.png' size='small' />
+                    <div className='tagline'>
+                        <p className='underline'>Anh Nguyen</p>
+                        <p className='italic'>"My life's dope & I do dope shit"</p>
+                        <h3> User Rating</h3>
+                        <div className='profileRating'>
+                            <i class='trash icon' />
+                            <Rating icon='star' defaultRating={3} maxRating={5} />
+                            <i class='fire icon' />
+                        </div>
                     </div>
-                    <p>Tagline</p>
                 </div>
-                <div>
-                    <h1>GitLit History</h1>
-                </div>
-                <img src='https://via.placeholder.com/800x700' />
+                <h1>Bar Review</h1>
+                <div className='profileBarReview' />
             </div>
         );
     }
