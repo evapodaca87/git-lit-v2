@@ -18,12 +18,6 @@ componentDidMount () {
   this.fetchPlaces()
 }
 
-// showBarName = (e) =>{
-//   e.preventDefault()
-//   const nombre = e.target.name
-//   console.log(nombre)
-// }
-
 onMarkerClick = (props, marker, e) => {
   console.log(props)
   this.setState({
@@ -96,12 +90,12 @@ render() {
           name = { 'Current Location' }
           />
           <InfoWindow
-            // position = {this.props.initialCenter}
+            position = {this.props.initialCenter}
             marker = { this.state.activeMarker }
             visible = { this.state.showingInfoWindow }>
             <div>
               <h3>{this.state.selectedPlace.name}</h3>
-              <p>Litness: { this.state.selectedPlace.rating || 'Unavailable' }</p>
+              <p> <img className='tinyFire'src='/fire.png'></img> { this.state.selectedPlace.rating || 'Unavailable' }</p>
               <p> {this.state.selectedPlace.address}</p>
               <p> {this.state.selectedPlace.openNow ? "Open" : "Closed"}</p>
             </div>
