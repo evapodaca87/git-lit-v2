@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './App.css'
 import GoogleMapsContainer from './Components/GoogleMapsContainer.js'
 import { Button } from 'semantic-ui-react'
 
@@ -44,7 +43,7 @@ class Home extends Component {
     render() {
         const showMap = this.state.showMap
         return (
-            <div className='App2'>
+            <div className='home-wrapper'>
                 <header>
                     <img
                         className='logoHead'

@@ -4,7 +4,7 @@ import Bar from './Bar';
 
 const BarList = ({ bars }) => {
     return (
-        <div>
+        <div className='barList'>
             {bars.map(bar => <Bar key={bar.id} bar={bar}/>)}
         </div>
     )
