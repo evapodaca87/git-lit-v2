@@ -22,7 +22,7 @@ router.get('/detailed', (req,res,next) => {
     })
 })
 
-
+//get all the ratings for one bar
 router.get('/bar/:id', (req,res,next) => {
   const id = req.params.id
   
@@ -37,7 +37,7 @@ router.get('/bar/:id', (req,res,next) => {
     })
 })
 
-
+// get a bars average ratings
 router.get('/bar/:id/average', (req,res,next) => {
 
   const id = req.params.id
