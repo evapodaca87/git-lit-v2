@@ -41,7 +41,7 @@ onMapClick = (props) => {
     const lat = this.props.initialCenter.lat
     const lng = this.props.initialCenter.lng
     console.log(this.props.initialCenter.lat, this.props.initialCenter.lng)
-     fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=restaurant&keyword=bar&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
+     fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1750&type=restaurant&keyword=bar&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
       .then(response => response.json())
       .then(function(data) {
         console.log("data",data.results)
@@ -95,7 +95,7 @@ render() {
             visible = { this.state.showingInfoWindow }>
             <div>
               <h3>{this.state.selectedPlace.name}</h3>
-              <p> <img className='tinyFire'src='/fire.png'></img> { this.state.selectedPlace.rating || 'Unavailable' }</p>
+              <p> <img className='tinyFire'src='/fire2.png'></img> { this.state.selectedPlace.rating || '0'}</p>
               <p> {this.state.selectedPlace.address}</p>
               <p> {this.state.selectedPlace.openNow ? "Open" : "Closed"}</p>
             </div>

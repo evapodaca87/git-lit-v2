@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import './App.css'
 import GoogleMapsContainer from './Components/GoogleMapsContainer.js'
-import { Checkbox } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 
 class Home extends Component {
 
     state = {
         showMap: false,
+        checked: true,
         initialCenter: {
             lat:39 ,
             lng:-104
@@ -17,8 +18,7 @@ class Home extends Component {
         const coords = await this.getCurrentLocation()
         console.log("coords",coords)
       }
-    
-    
+
        getCurrentLocation = () => {
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -37,7 +37,7 @@ class Home extends Component {
       }
 
     toggleMap = () => {
-        this.setState({showMap: !this.state.showMap})
+        this.setState({showMap: !this.state.showMap, checked: !this.state.checked})
     }
 
     render() {
@@ -50,7 +50,8 @@ class Home extends Component {
                         src='http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-default-picture-4.png'
                     />
                      
-                     <Checkbox toggle checked={this.state.showMap} onChange={this.toggleMap}/>
+                     {/* <Checkbox toggle checked={this.state.showMap} onChange={this.toggleMap}/> */}
+        <Button  id='litButton' toggle checked={this.state.showMap} onClick={this.toggleMap}toggle>{this.state.checked ? <img className='litFire'src='/fire1.png' /> : <img className='litFire'src='/fire2.png' />}</Button>
 
                     <img
                         className='logoHead'
