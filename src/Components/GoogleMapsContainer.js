@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, createContext } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+// import { Rating } from 'semantic-ui-react'
+// import BarList from './Barlist';
 
 class GoogleMapsContainer extends Component {
     constructor(props) {
@@ -8,19 +10,14 @@ class GoogleMapsContainer extends Component {
             showingInfoWindow: false,
             activeMarker: {},
             selectedPlace: {},
-            markers: []
+            markers: [],
+            bars: []
         };
     }
 
     componentDidMount() {
         this.fetchPlaces();
     }
-
-    // showBarName = (e) =>{
-    //   e.preventDefault()
-    //   const nombre = e.target.name
-    //   console.log(nombre)
-    // }
 
     onMarkerClick = (props, marker, e) => {
         console.log(props);
@@ -68,6 +65,30 @@ class GoogleMapsContainer extends Component {
             });
     };
 
+    // fetchBars = () => {
+    //   const context = this
+    //   const lat = this.props.initialCenter.lat
+    //   const lng = this.props.initialCenter.lng
+    //   console.log(this.props.initialCenter.lat, this.props.initialCenter.lng)
+    //    fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=restaurant&keyword=bar&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
+    //     .then(response => response.json())
+    //     .then(function(data) {
+    //       console.log("data",data.results)
+    //       const bars = data.results.map(bar => {
+    //         return (
+    //             <BarList
+    //               key = { bar.id }
+    //               name = { bar.name }
+    //               rating = {bar.rating}
+    //               address = {bar.vicinity}
+    //               openNow = {bar.opening_hours.open_now}
+    //             />
+    //         )
+    //       })
+    //     context.setState({bars})
+    // })
+    // }
+
     render() {
         const style = {
             width: '100vw',
@@ -77,14 +98,14 @@ class GoogleMapsContainer extends Component {
         };
 
         return (
-            <div>
+            <div className='resize'>
                 <Map
                     item
                     xs={12}
                     style={style}
                     google={this.props.google}
                     onClick={this.onMapClick}
-                    zoom={14}
+                    zoom={15}
                     initialCenter={this.props.initialCenter}
                     onReady={this.fetchPlaces}
                 >
@@ -95,22 +116,40 @@ class GoogleMapsContainer extends Component {
                         name={'Current Location'}
                     />
                     <InfoWindow
-                        // position = {this.props.initialCenter}
+                        position={this.props.initialCenter}
                         marker={this.state.activeMarker}
                         visible={this.state.showingInfoWindow}
                     >
                         <div>
                             <h3>{this.state.selectedPlace.name}</h3>
-                            <p>Litness: {this.state.selectedPlace.rating || 'Unavailable'}</p>
+                            <p>
+                                {' '}
+                                <img className='tinyFire' src='/fire2.png' /> {this.state.selectedPlace.rating || '0'}
+                            </p>
                             <p> {this.state.selectedPlace.address}</p>
                             <p> {this.state.selectedPlace.openNow ? 'Open' : 'Closed'}</p>
                         </div>
                     </InfoWindow>
                     {this.state.markers}
                 </Map>
+                {/* <BarList bars={this.state.markers}/> */}
             </div>
         );
     }
+}
+
+{
+    /* <h3>Bar Review</h3>
+                    <div className="barReview">
+                      <p> Bar Name</p>
+                      {this.props.markers}
+                      <p> This bar was a total piece of shit. It's no village inn. </p>
+                      <div className="rating">
+                        <i class="trash icon"></i>
+                        <Rating icon='star' defaultRating={3} maxRating={5} />
+                        <i class="fire icon"></i>
+                    </div>
+</div> */
 }
 
 export default GoogleApiWrapper({
