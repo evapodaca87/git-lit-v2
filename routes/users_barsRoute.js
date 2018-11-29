@@ -3,14 +3,14 @@ const router = express.Router()
 const knex = require('../db/connection.js')
 
 
-// router.get('/', (req,res,next) => {
-//   knex('users_bars')
-//   .then(review => {
-//     res.json({review: review})
-//   })
-// })
-
 router.get('/', (req,res,next) => {
+  knex('users_bars')
+  .then(review => {
+    res.json({review: review})
+  })
+})
+
+router.get('/detailed', (req,res,next) => {
   
   return knex.select('*').from('users')
     .innerJoin('users_bars', 'users.id', 'users_bars.user_id')
@@ -19,9 +19,48 @@ router.get('/', (req,res,next) => {
       res.json({
         response: response
       })
-    } )
+    })
 
 })
+
+
+router.get('/bar/:id', (req,res,next) => {
+  const id = req.params.id
+  
+  return knex.select('*').from('users')
+    .innerJoin('users_bars', 'users.id', 'users_bars.user_id')
+    .innerJoin('bars', 'bars.id', 'users_bars.bar_id')
+    .where('bars.id', id)
+    .then(response => {
+      res.json({
+        response: response
+      })
+    })
+})
+
+
+router.get('/bar/:id/average', (req,res,next) => {
+  const id = req.params.id
+  
+  return knex.select('*').from('users')
+    .innerJoin('users_bars', 'users.id', 'users_bars.user_id')
+    .innerJoin('bars', 'bars.id', 'users_bars.bar_id')
+    .where('bars.id', id)
+    .then(response => {
+      console.log('heyo')
+      res.json({
+        response: response
+      })
+    })
+
+    // knex.avg('sum_column1').from(function() {
+    //   this.sum('column1 as sum_column1').from('t1').groupBy('column1').as('t1')
+    // }).as('ignored_alias')
+
+
+
+})
+
 
 
 
