@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Slide from '../Components/slide.js';
-import { Rating } from 'semantic-ui-react'
-import GoogleMapsContainer from '../Components/GoogleMapsContainer.js'
-import { Checkbox } from 'semantic-ui-react'
 import HomeTabs from './hometabs.js';
 
 
@@ -14,6 +10,7 @@ class Splash extends Component {
             <div className='App'>
                 <div className='head'>
                     <img
+                        alt="logo"
                         className='logo'
                         src='https://files.slack.com/files-pri/T1T555TL0-FEBL8TWRX/screen_shot_2018-11-26_at_11.26.57_am.png'
                     />
