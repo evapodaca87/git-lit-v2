@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-
     "@material-ui/core": "^3.6.0",
     "@material-ui/icons": "^3.0.1",
     "@material-ui/lab": "^3.0.0-alpha.24",
-
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
     "google-maps-react": "^2.0.2",
- 
+    "knex": "^0.15.2",
+    "nodemon": "^1.18.7",
+    "pg": "^7.6.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-native": "^0.57.7",
@@ -17,7 +20,7 @@
     "semantic-ui-react": "^0.83.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node 'thebittertasteofdefeat/app.js'",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
