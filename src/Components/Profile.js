@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Image, Icon, Rating } from 'semantic-ui-react';
+import gitlitpic from '../pictures/gitlit.png'
+import anh from '../pictures/anh.png'
 
 import '../App.css';
 
@@ -9,12 +11,12 @@ class Profile extends Component {
             <div>
                 <div className='profileHeader'>
                     <Header as='h2'>
-                        <Image circular src='pictures/gitlit.png' /> Return Home
+                        <Image circular src={gitlitpic} /> Return Home
                     </Header>
                 </div>
 
                 <div className='profilePicture'>
-                    <Image className='picture' src='pictures/anh.png' size='small' />
+                    <Image className='picture' src={anh} size='small' />
                     <div className='tagline'>
                         <p className='underline'>Anh Nguyen</p>
                         <p className='italic'>"My life's dope & I do dope shit"</p>

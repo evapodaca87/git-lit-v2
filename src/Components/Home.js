@@ -4,6 +4,9 @@ import GoogleMapsContainer from '../Components/GoogleMapsContainer.js'
 import { Button } from 'semantic-ui-react'
 import fire1 from '../pictures/fire1.png'
 import fire2 from '../pictures/fire2.png'
+import anh from '../pictures/anh.png'
+import { Link } from 'react-router-dom';
+
 
 
 class Home extends Component {
@@ -48,11 +51,12 @@ class Home extends Component {
         return (
             <div className='App2'>
                 <header>
+                    <Link to="Profile">
                     <img
                         className='logoHead'
-                        src='http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-default-picture-4.png'
+                        src={anh}
                     />
-                     
+                    </Link> 
                      {/* <Checkbox toggle checked={this.state.showMap} onChange={this.toggleMap}/> */}
         <Button  id='litButton' toggle checked={this.state.showMap} onClick={this.toggleMap}toggle>{this.state.checked ? <img className='litFire'src={fire1} /> : <img className='litFire'src={fire2} />}</Button>
 

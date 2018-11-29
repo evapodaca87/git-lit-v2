@@ -32,6 +32,7 @@ header {
 .logoHead {
     /* width: 10vw; */
     height: 20vh;
+    border-radius: 50%;
 }
 
 .ui.fitted.toggle.checkbox {
@@ -115,7 +116,6 @@ header {
 .profileHeader {
     display: flex;
     justify-content: flex-start;
-    margin-top: 10%;
     border-bottom: 6px solid grey;
 }
 
