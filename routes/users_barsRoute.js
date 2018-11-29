@@ -10,8 +10,8 @@ router.get('/', (req,res,next) => {
   })
 })
 
+// dat many to many join
 router.get('/detailed', (req,res,next) => {
-  
   return knex.select('*').from('users')
     .innerJoin('users_bars', 'users.id', 'users_bars.user_id')
     .innerJoin('bars', 'bars.id', 'users_bars.bar_id')
@@ -20,7 +20,6 @@ router.get('/detailed', (req,res,next) => {
         response: response
       })
     })
-
 })
 
 
@@ -40,9 +39,10 @@ router.get('/bar/:id', (req,res,next) => {
 
 
 router.get('/bar/:id/average', (req,res,next) => {
+
   const id = req.params.id
   
-  return knex.select('*').from('users')
+  return knex.avg('users_bars.stars').from('users')
     .innerJoin('users_bars', 'users.id', 'users_bars.user_id')
     .innerJoin('bars', 'bars.id', 'users_bars.bar_id')
     .where('bars.id', id)
@@ -58,10 +58,7 @@ router.get('/bar/:id/average', (req,res,next) => {
     // }).as('ignored_alias')
 
 
-
 })
-
-
 
 
 
