@@ -11,7 +11,7 @@ class Profile extends Component {
                 <header>
                 <Link to="/Home">
                     <img
-                        className='logoHead'
+                        className='logoHead profile-pic'
                         alt='back2home'
                         src='https://files.slack.com/files-pri/T1T555TL0-FEBL8TWRX/screen_shot_2018-11-26_at_11.26.57_am.png' />
                 </Link>

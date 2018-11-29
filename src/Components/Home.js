@@ -5,6 +5,7 @@ import { Rating } from "semantic-ui-react";
 import GoogleMapsContainer from "../Components/GoogleMapsContainer.js";
 import { Checkbox } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
+import anh from '../pictures/anh.png'
 
 class Home extends Component {
   state = {
@@ -50,8 +51,8 @@ class Home extends Component {
       <div className="App2">
         <header>
         <Link to="/Profile"><img
-            className="logoHead"
-            src="http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-default-picture-4.png"
+            className="logoHead profile-pic"
+            src={anh}
           />
         </Link>
 
