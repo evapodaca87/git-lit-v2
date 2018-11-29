@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Header, Image, Icon, Rating } from 'semantic-ui-react';
-import gitlitpic from '../pictures/gitlit.png'
-import anh from '../pictures/anh.png'
+import gitlitpic from '../pictures/gitlit.png';
+import anh from '../pictures/anh.png';
+import { Link } from 'react-router-dom';
 
 import '../App.css';
 
@@ -11,7 +12,9 @@ class Profile extends Component {
             <div>
                 <div className='profileHeader'>
                     <Header as='h2'>
-                        <Image circular src={gitlitpic} /> Return Home
+                        
+                        <Image circular src={gitlitpic} /> <Link to='Home'>Return Home
+                        </Link>
                     </Header>
                 </div>
 
@@ -23,7 +26,7 @@ class Profile extends Component {
                         <h3> User Rating</h3>
                         <div className='profileRating'>
                             <i class='trash icon' />
-                            <Rating icon='star' defaultRating={3} maxRating={5} />
+                            <Rating icon='star' defaultRating={5} maxRating={5} />
                             <i class='fire icon' />
                         </div>
                     </div>
