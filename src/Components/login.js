@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Form, Segment } from 'semantic-ui-react';
 
+    
+
+
  class Login extends Component{
    constructor(props){
      super(props);
@@ -10,8 +13,6 @@ import { Button, Form, Segment } from 'semantic-ui-react';
        password:''
           }
    }
-
-
 
    render(){
    return(
@@ -31,8 +32,7 @@ import { Button, Form, Segment } from 'semantic-ui-react';
 
     </Segment>
 
-    email: {this.state.email}
-    password:{this.state.password}
+    
     </div>
   )
 

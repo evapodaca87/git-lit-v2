@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import Slide from './Components/slide.js';
+import '../App.css';
+import Slide from '../Components/slide.js';
 import { Rating } from 'semantic-ui-react'
-import GoogleMapsContainer from './Components/GoogleMapsContainer.js'
+import GoogleMapsContainer from '../Components/GoogleMapsContainer.js'
 import { Checkbox } from 'semantic-ui-react'
 
 
@@ -66,7 +66,7 @@ class Home extends Component {
                 <h3>Bar Review</h3>
                 <div className="barReview">
                   <p> Bar Name</p>
-                  <p> This bar was a total peice of shit. It's no village in. </p>
+                  <p> This bar was a total piece of shit. It's no village in. </p>
                   <div className="rating">
                     <i class="trash icon"></i>
                     <Rating icon='star' defaultRating={3} maxRating={5} />
