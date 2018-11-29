@@ -32,6 +32,7 @@ header {
 .logoHead {
     /* width: 10vw; */
     height: 20vh;
+    border-radius: 50%;
 }
 
 .ui.fitted.toggle.checkbox {
@@ -46,6 +47,55 @@ header {
     height: 400px;
     background-color: brown;
     align-items: center;
+}
+
+.ui.toggle.checkbox input:focus:checked ~ .box:before,
+.ui.toggle.checkbox input:focus:checked ~ label:before {
+    background-color: red !important;
+}
+
+.ui.toggle.checkbox .box:before,
+.ui.toggle.checkbox label:before {
+    background-color: grey;
+}
+
+.fire {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Profilecontainer {
+    background-color: black;
+    color: White;
+    font-size: 3em;
+    height: 20%;
+}
+
+.sliderClass {
+    display: flex;
+    justify-content: center;
+}
+.barReview {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.active.icon {
+    color: red;
+}
+
+.test {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-pic {
+    border-radius: 50%;
 }
 
 .tinyFire {
@@ -91,4 +141,62 @@ header {
 
 .rating {
     margin: -0.1em;
+.profileHeader {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 6px solid grey;
+}
+
+.profilePicture {
+    display: flex;
+    justify-content: flex-start;
+    height: 200px;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+.picture {
+    border-radius: 50%;
+    border: 3px solid black;
+}
+
+.tagline {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    align-items: flex-start;
+    margin-left: 5%;
+
+    text-shadow: 1px 1px black;
+    color: grey;
+
+    justify-content: space-around;
+}
+.underline {
+    text-decoration: underline;
+    font-size: 5em;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+.italic {
+    font-style: italic;
+    font-size: 2em;
+    text-shadow: 1px 1px black;
+    color: grey;
+    margin: 0 0 0.1em 0;
+}
+
+.profileRating {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 0.1em 0;
+}
+.profileBarReview {
+    border: 4px solid grey;
+    height: 400px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.barTitle {
+    margin-top: 10%;
 }
