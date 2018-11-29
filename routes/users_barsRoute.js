@@ -3,12 +3,32 @@ const router = express.Router()
 const knex = require('../db/connection.js')
 
 
+// router.get('/', (req,res,next) => {
+//   knex('users_bars')
+//   .then(review => {
+//     res.json({review: review})
+//   })
+// })
+
 router.get('/', (req,res,next) => {
-  knex('users_bars')
-  .then(review => {
-    res.json({review: review})
-  })
+  
+  return knex.select('*').from('users')
+    .innerJoin('users_bars', 'users.id', 'users_bars.user_id')
+    .innerJoin('bars', 'bars.id', 'users_bars.bar_id')
+    .then(response => {
+      res.json({
+        response: response
+      })
+    } )
+
 })
+
+
+
+
+
+
+
 
 router.get('/:id', (req,res,next) =>{
 const id = req.params.id
