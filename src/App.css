@@ -119,17 +119,17 @@ header {
     top: 40%;
 }
 
-.barReview{
+.barReview {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-left: 10%;
-    margin-right:10%;
-  }
+    margin-right: 10%;
+}
 
 .barList {
     position: relative;
-    top: 25em;
+    top: 38em;
     display: flex;
     flex-wrap: wrap;
 }
@@ -139,8 +139,6 @@ header {
     padding: 3% 0 3% 0;
 }
 
-.rating {
-    margin: -0.1em;
 .profileHeader {
     display: flex;
     justify-content: flex-start;
