@@ -1,7 +1,7 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('users_bars').del()
+  return knex.raw('DELETE FROM "users_bars"; ALTER SEQUENCE users_bars_id_seq RESTART WITH 4;')
     .then(function () {
       // Inserts seed entries
       return knex('users_bars').insert([
@@ -15,13 +15,13 @@ exports.seed = function(knex, Promise) {
           id: 2,
           user_id: 2,
           bar_id: 2,
-          stars: 4
+          stars: 5
         },
         {
           id: 3,
           user_id: 3,
-          bar_id: 3,
-          stars: 3
+          bar_id: 2,
+          stars: 1
         }
       ]);
     });

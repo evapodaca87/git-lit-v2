@@ -1,7 +1,7 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('users').del()
+  return knex.raw('DELETE FROM "users"; ALTER SEQUENCE users_id_seq RESTART WITH 6;')
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([
@@ -11,7 +11,8 @@ exports.seed = function(knex, Promise) {
             "last": "Apodaca",
             "email": "evapodaca87@gmail.com",
             "username": "evapodaca87",
-            "password": "evan"
+            "password": "evan",
+            "active": false
         },
         {
             "id": 2,
@@ -19,7 +20,8 @@ exports.seed = function(knex, Promise) {
             "last": "Bain",
             "email": "bill@mail.com",
             "username": "billbain",
-            "password": "bain"
+            "password": "bain",
+            "active": false
         },
         {
             "id": 3,
@@ -27,7 +29,8 @@ exports.seed = function(knex, Promise) {
             "last": "Isaguirre",
             "email": "jody@mail.com",
             "username": "jodyisaquirre",
-            "password": "irre"
+            "password": "irre",
+            "active": false
         },
         {
             "id": 4,
@@ -35,7 +38,8 @@ exports.seed = function(knex, Promise) {
             "last": "Hovland",
             "email": "jonathan@mail.com",
             "username": "jonathanhovland",
-            "password": "land"
+            "password": "land",
+            "active": false
         },
         {
             "id": 5,
@@ -43,7 +47,8 @@ exports.seed = function(knex, Promise) {
             "last": "Hill",
             "email": "robhill@mail.com",
             "username": "robhill",
-            "password": "hill"
+            "password": "hill",
+            "active": false
         }
     ]);
   });
