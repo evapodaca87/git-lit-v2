@@ -12,9 +12,7 @@ class Profile extends Component {
             <div>
                 <div className='profileHeader'>
                     <Header as='h2'>
-                        
-                        <Image circular src={gitlitpic} /> <Link to='Home'>Return Home
-                        </Link>
+                        <Image circular src={gitlitpic} /> <Link to='Home'>Return Home</Link>
                     </Header>
                 </div>
 
@@ -31,8 +29,38 @@ class Profile extends Component {
                         </div>
                     </div>
                 </div>
-                <h1>Bar Review</h1>
-                <div className='profileBarReview' />
+                <div className='barTitle'>
+                    <h1>Bar Review</h1>
+                </div>
+                <div className='profileBarReview'>
+                    <div className='barReview'>
+                        <p> Victor's</p>
+                        <p> This bar was soft as cake </p>
+                        <div>
+                            <i class='trash icon' />
+                            <Rating icon='star' defaultRating={1} maxRating={5} />
+                            <i class='fire icon' />
+                        </div>
+                    </div>
+                    <div className='barReview'>
+                        <p> Jody's</p>
+                        <p> This bar was Lit AF!!! </p>
+                        <div>
+                            <i class='trash icon' />
+                            <Rating icon='star' defaultRating={5} maxRating={5} />
+                            <i class='fire icon' />
+                        </div>
+                    </div>
+                    <div className='barReview'>
+                        <p> Matt's</p>
+                        <p> Hard Pass </p>
+                        <div>
+                            <i class='trash icon' />
+                            <Rating icon='star' defaultRating={2} maxRating={5} />
+                            <i class='fire icon' />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
