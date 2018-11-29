@@ -49,7 +49,7 @@ class Home extends Component {
     render() {
         const showMap = this.state.showMap
         return (
-            <div className='App2'>
+            <div className='home-wrapper'>
                 <header>
                     <Link to="Profile">
                     <img

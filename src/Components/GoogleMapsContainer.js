@@ -1,40 +1,34 @@
-import React, { Component, createContext } from 'react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-// import { Rating } from 'semantic-ui-react'
-// import BarList from './Barlist';
+import React,{Component, createContext} from 'react'
+import {Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
+import BarList from './Barlist';
+
+
 
 class GoogleMapsContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showingInfoWindow: false,
-            activeMarker: {},
-            selectedPlace: {},
-            markers: [],
-            bars: []
-        };
+constructor(props){
+  super(props)
+    this.state={
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+      markers: []
     }
+}
 
     componentDidMount() {
         this.fetchPlaces();
     }
 
-    onMarkerClick = (props, marker, e) => {
-        console.log(props);
-        this.setState({
-            selectedPlace: props,
-            activeMarker: marker,
-            showingInfoWindow: true
-        });
-    };
-    onMapClick = (props) => {
-        if (this.state.showingInfoWindow) {
-            this.setState({
-                showingInfoWindow: false,
-                activeMarker: null
-            });
-        }
-    };
+componentDidMount () {
+  this.fetchPlaces()
+}
+
+onMarkerClick = (props, marker, e) => {
+  console.log(props)
+  this.setState({
+    selectedPlace: props,
+    activeMarker: marker,
+    showingInfoWindow: true,
 
     fetchPlaces = (mapProps, map) => {
         const context = this;
@@ -97,59 +91,41 @@ class GoogleMapsContainer extends Component {
             marginRight: 'auto'
         };
 
-        return (
-            <div className='resize'>
-                <Map
-                    item
-                    xs={12}
-                    style={style}
-                    google={this.props.google}
-                    onClick={this.onMapClick}
-                    zoom={15}
-                    initialCenter={this.props.initialCenter}
-                    onReady={this.fetchPlaces}
-                >
-                    <Marker
-                        onClick={this.onMarkerClick}
-                        title={'Current Location'}
-                        position={this.props.initialCenter}
-                        name={'Current Location'}
-                    />
-                    <InfoWindow
-                        position={this.props.initialCenter}
-                        marker={this.state.activeMarker}
-                        visible={this.state.showingInfoWindow}
-                    >
-                        <div>
-                            <h3>{this.state.selectedPlace.name}</h3>
-                            <p>
-                                {' '}
-                                <img className='tinyFire' src='/fire2.png' /> {this.state.selectedPlace.rating || '0'}
-                            </p>
-                            <p> {this.state.selectedPlace.address}</p>
-                            <p> {this.state.selectedPlace.openNow ? 'Open' : 'Closed'}</p>
-                        </div>
-                    </InfoWindow>
-                    {this.state.markers}
-                </Map>
-                {/* <BarList bars={this.state.markers}/> */}
-            </div>
-        );
-    }
-}
-
-{
-    /* <h3>Bar Review</h3>
-                    <div className="barReview">
-                      <p> Bar Name</p>
-                      {this.props.markers}
-                      <p> This bar was a total piece of shit. It's no village inn. </p>
-                      <div className="rating">
-                        <i class="trash icon"></i>
-                        <Rating icon='star' defaultRating={3} maxRating={5} />
-                        <i class="fire icon"></i>
-                    </div>
-</div> */
+  return (
+    <div className='maps-container'>
+        <Map
+        item
+        xs = { 12 }
+        style = { style }
+        google = { this.props.google }
+        onClick = { this.onMapClick }
+        zoom = { 15 }
+        initialCenter = {this.props.initialCenter}
+        onReady={this.fetchPlaces}
+        >
+        <Marker
+          onClick = { this.onMarkerClick }
+          title = { 'Current Location' }
+          position = {this.props.initialCenter}
+          name = { 'Current Location' }
+          />
+        <InfoWindow
+          position = {this.props.initialCenter}
+          marker = { this.state.activeMarker }
+          visible = { this.state.showingInfoWindow }>
+          <div className="info-window">
+            <h3>{this.state.selectedPlace.name}</h3>
+            <p> <img className='tinyFire'src='/fire2.png'></img> { this.state.selectedPlace.rating || '0'}</p>
+            <p> {this.state.selectedPlace.address}</p>
+            <p> {this.state.selectedPlace.openNow ? "Open" : "Closed"}</p>
+          </div>
+        </InfoWindow>
+          {this.state.markers}
+        </Map>
+        <BarList className="resize" bars={this.state.markers} />
+      </div>
+    )
+  }
 }
 
 export default GoogleApiWrapper({

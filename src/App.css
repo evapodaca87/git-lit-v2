@@ -113,6 +113,34 @@ header {
     height: 55px;
 }
 
+.resize {
+    margin: 30%;
+    position: absolute;
+    top: 40%;
+}
+
+.barReview{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right:10%;
+  }
+
+.barList {
+    position: relative;
+    top: 25em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.barContainer {
+    width: 20%;
+    padding: 3% 0 3% 0;
+}
+
+.rating {
+    margin: -0.1em;
 .profileHeader {
     display: flex;
     justify-content: flex-start;
