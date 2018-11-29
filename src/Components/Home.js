@@ -4,6 +4,7 @@ import Slide from "../Components/slide.js";
 import { Rating } from "semantic-ui-react";
 import GoogleMapsContainer from "../Components/GoogleMapsContainer.js";
 import { Checkbox } from "semantic-ui-react";
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
   state = {
@@ -48,10 +49,11 @@ class Home extends Component {
     return (
       <div className="App2">
         <header>
-          <img
+        <Link to="/Profile"><img
             className="logoHead"
             src="http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-default-picture-4.png"
           />
+        </Link>
 
           <Checkbox
             toggle

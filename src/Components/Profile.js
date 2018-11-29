@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
 
 
@@ -8,9 +9,12 @@ class Profile extends Component {
         return (
             <div className='App3'>
                 <header>
+                <Link to="/Home">
                     <img
                         className='logoHead'
+                        alt='back2home'
                         src='https://files.slack.com/files-pri/T1T555TL0-FEBL8TWRX/screen_shot_2018-11-26_at_11.26.57_am.png' />
+                </Link>
                 </header>
                 <div>
                 <img
@@ -18,7 +22,7 @@ class Profile extends Component {
                     src='http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-default-picture-4.png' />
                 </div>
                 <div className="Profilecontainer">
-                  <div>
+                <div>
                     <p>Name</p>
                   </div>
                   <p>Tagline</p>

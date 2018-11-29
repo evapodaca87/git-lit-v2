@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import Submit from './Submit.js';
 
 class SignUp extends Component {
@@ -63,7 +64,7 @@ class SignUp extends Component {
                             />
                         </Form.Group>
                         <Submit />
-                        <Button type='submit'>Submit</Button>
+                        <Button type='submit'><Link to="/Home">Sign Up</Link></Button>
                     </Form>
                 </Segment>
             </div>
