@@ -8,8 +8,8 @@ class NewReview extends Component {
     super(props)
     this.state = {
       commentVal: "",
-      starVal: "",
-      barVal:""
+      starVal: 1,
+      barVal:2
     }
   }
 
@@ -19,7 +19,16 @@ class NewReview extends Component {
   // }
 
   commentListener = (event) => {
-    this.setState({ bodyVal : event.target.value })
+    this.setState({ commentVal : event.target.value })
+  }
+
+  barListener = (event) => {
+    this.setState({})
+  }
+
+  starListener = (event) => {
+    let value = event.target
+    this.setState({ starVal : Number(value.getAttribute("aria-posinset"))})
   }
 
 
@@ -35,9 +44,9 @@ class NewReview extends Component {
       },
       body: JSON.stringify({
         "user_id": 6,
-        "bar_id": 3,
-        "stars": 2,
-        "comment": 'so weak'
+        "bar_id": this.state.barVal,
+        "stars": this.state.starVal,
+        "comment": this.state.commentVal
   })
     })
       .then(response => response.json())
@@ -61,10 +70,12 @@ class NewReview extends Component {
           <br />
           <label htmlFor="size_2">Comments: </label>
           <br />
-          <textarea className="form-field" onChange={this.bodyListener} name="body" id="body" rows="6" cols="46" value={this.state.bodyVal}/>
+          <textarea className="form-field" onChange={this.commentListener} name="body" id="body" rows="6" cols="46" value={this.state.commentVal}/>
           <br />
           <i class='trash icon' />
-            <Rating icon='star' defaultRating={0} maxRating={5} />
+            <span onClick={this.test}>
+              <Rating icon='star' defaultRating={0} maxRating={5} />
+            </span>
           <i class='fire icon' />
           <button onClick={this.postReview}>Submit</button>
         </fieldset>
