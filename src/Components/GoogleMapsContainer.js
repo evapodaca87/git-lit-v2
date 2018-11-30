@@ -1,8 +1,6 @@
-import React,{Component, createContext} from 'react'
-import {Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
-import { Rating } from 'semantic-ui-react'
-import BarList from './Barlist';
-
+import React,{ Component } from 'react'
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
+import BarList from './Barlist'
 
 class GoogleMapsContainer extends Component {
 constructor(props){
@@ -11,17 +9,15 @@ constructor(props){
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      markers: [],
-      bars: []
-      }
+      markers: []
     }
-
+}
 
 componentDidMount () {
   this.fetchPlaces()
 }
 
-onMarkerClick = (props, marker, e) => {
+onMarkerClick = (props, marker) => {
   console.log(props)
   this.setState({
     selectedPlace: props,
@@ -30,21 +26,22 @@ onMarkerClick = (props, marker, e) => {
 
   });
 }
-onMapClick = (props) => {
+
+onMapClick = () => {
   if (this.state.showingInfoWindow) {
     this.setState({
       showingInfoWindow: false,
       activeMarker: null
-    });
+    })
   }
 }
 
-  fetchPlaces = (mapProps, map) => {
+  fetchPlaces = () => {
     const context = this
     const lat = this.props.initialCenter.lat
     const lng = this.props.initialCenter.lng
     console.log(this.props.initialCenter.lat, this.props.initialCenter.lng)
-     fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=restaurant&keyword=bar&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
+      fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=restaurant&keyword=bar&key=AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM`)
       .then(response => response.json())
       .then(function(data) {
         console.log("data",data.results)
@@ -67,6 +64,7 @@ onMapClick = (props) => {
 }
 
 
+
 render() {
   const style = {
     width: '100vw',
@@ -76,7 +74,7 @@ render() {
   }
 
   return (
-    <div>
+    <div className='maps-container'>
         <Map
         item
         xs = { 12 }
@@ -97,7 +95,7 @@ render() {
           position = {this.props.initialCenter}
           marker = { this.state.activeMarker }
           visible = { this.state.showingInfoWindow }>
-          <div>
+          <div className="info-window">
             <h3>{this.state.selectedPlace.name}</h3>
             <p> <img className='tinyFire'src='/fire2.png'></img> { this.state.selectedPlace.rating || '0'}</p>
             <p> {this.state.selectedPlace.address}</p>
@@ -106,23 +104,11 @@ render() {
         </InfoWindow>
           {this.state.markers}
         </Map>
-        <BarList className='resize' bars={this.state.markers}/>
+        <BarList className="resize" bars={this.state.markers} />
       </div>
     )
   }
 }
-
-{/* <h3>Bar Review</h3>
-                    <div className="barReview">
-                      <p> Bar Name</p>
-                      {this.props.markers}
-                      <p> This bar was a total piece of shit. It's no village inn. </p>
-                      <div className="rating">
-                        <i class="trash icon"></i>
-                        <Rating icon='star' defaultRating={3} maxRating={5} />
-                        <i class="fire icon"></i>
-                    </div>
-</div> */}
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyBMyIR5up1KiKHZzvm6N7xAxm8eREIDpCM'
