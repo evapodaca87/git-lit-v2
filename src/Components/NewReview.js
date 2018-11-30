@@ -8,8 +8,8 @@ class NewReview extends Component {
     super(props)
     this.state = {
       commentVal: "",
-      starVal: 1,
-      barVal:2
+      starVal: 0,
+      barVal:1
     }
   }
 
@@ -23,15 +23,13 @@ class NewReview extends Component {
   }
 
   barListener = (event) => {
-    this.setState({})
+    this.setState({ barVal : event.target.value })
   }
 
   starListener = (event) => {
     let value = event.target
     this.setState({ starVal : Number(value.getAttribute("aria-posinset"))})
   }
-
-
 
 
   postReview = (event) => {
@@ -51,7 +49,7 @@ class NewReview extends Component {
     })
       .then(response => response.json())
       .then(this.props.reviewFetcher)
-    this.setState({ newReview: false });
+    // this.setState({ newReview: false });
   }
 
 
@@ -61,7 +59,7 @@ class NewReview extends Component {
         <fieldset className="new-tweet-field">
           <legend>Submit New Review</legend>
           <label>Establishment: </label>
-          <select onChange={this.setState()}>
+          <select onChange={this.barListener}>
             <option value='1'>My Brother's Bar</option>
             <option value='2'>Linger</option>
             <option value='3'>Highland Tap and Burger</option>
@@ -73,7 +71,7 @@ class NewReview extends Component {
           <textarea className="form-field" onChange={this.commentListener} name="body" id="body" rows="6" cols="46" value={this.state.commentVal}/>
           <br />
           <i class='trash icon' />
-            <span onClick={this.test}>
+            <span onClick={this.starListener}>
               <Rating icon='star' defaultRating={0} maxRating={5} />
             </span>
           <i class='fire icon' />
