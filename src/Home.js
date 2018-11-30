@@ -49,10 +49,7 @@ class Home extends Component {
                         className='logoHead'
                         src='http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-default-picture-4.png'
                     />
-                     
-                     {/* <Checkbox toggle checked={this.state.showMap} onChange={this.toggleMap}/> */}
-        <Button  id='litButton' toggle checked={this.state.showMap} onClick={this.toggleMap}toggle>{this.state.checked ? <img className='litFire'src='/fire1.png' /> : <img className='litFire'src='/fire2.png' />}</Button>
-
+                    <Button id='litButton' toggle checked={this.state.showMap} onClick={this.toggleMap}toggle>{this.state.checked ? <img className='litFire'src='/fire1.png' /> : <img className='litFire'src='/fire2.png' />} Git Litty </Button>
                     <img
                         className='logoHead'
                         src='https://files.slack.com/files-pri/T1T555TL0-FEBL8TWRX/screen_shot_2018-11-26_at_11.26.57_am.png'
@@ -65,4 +62,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Home

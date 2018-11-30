@@ -15,7 +15,6 @@ constructor(props){
     }
 }
 
-
 componentDidMount () {
   this.fetchPlaces()
 }
@@ -29,6 +28,7 @@ onMarkerClick = (props, marker, e) => {
 
   });
 }
+
 onMapClick = (props) => {
   if (this.state.showingInfoWindow) {
     this.setState({
@@ -64,6 +64,8 @@ onMapClick = (props) => {
       context.setState({markers})
   })
 }
+
+
 
 render() {
   const style = {

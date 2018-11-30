@@ -6,13 +6,12 @@ import '../App.css'
 const Bar = ({ bar }) => {
     return (
         <div className="barContainer">
-                      <p> {bar.props.name}</p>
+                      <p className="barName"> {bar.props.name}</p>
                       <p> {bar.props.address} </p>
-                      <p> {bar.props.rating} </p>
+                      <p>{bar.props.openNow ? "Open" : "Closed"}</p>
                       <div className="rating">
-                        <i class="trash icon"></i>
-                        <Rating icon='star' defaultRating={3} maxRating={5} />
-                        <i class="fire icon"></i>
+                        <img className='tinyFire'src='/fire2.png'></img>
+                        <Rating class="fire icon" defaultRating={Math.round(bar.props.rating)} maxRating={5} />
                     </div>
         </div>
     )
