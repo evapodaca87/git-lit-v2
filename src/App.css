@@ -109,14 +109,14 @@ header {
 }
 
 .litFire {
-    width: 55px;
-    height: 55px;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
 }
 
 .resize {
     margin: 30%;
-    position: absolute;
-    top: 40%;
 }
 
 .barReview {
@@ -129,7 +129,7 @@ header {
 
 .barList {
     position: relative;
-    top: 38em;
+    top: 50em;
     display: flex;
     flex-wrap: wrap;
 }
@@ -197,4 +197,9 @@ header {
 
 .barTitle {
     margin-top: 10%;
+}
+
+.barName {
+    font-weight: bold;
+    color: rgb(223, 148, 18);
 }
