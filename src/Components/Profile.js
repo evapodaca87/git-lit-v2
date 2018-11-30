@@ -3,10 +3,36 @@ import { Header, Image, Icon, Rating } from 'semantic-ui-react';
 import gitlitpic from '../pictures/gitlit.png';
 import anh from '../pictures/anh.png';
 import { Link } from 'react-router-dom';
+import ReviewList from './ReviewList'
+import NewReview from './NewReview'
 
 import '../App.css';
 
 class Profile extends Component {
+
+    constructor(){
+        super()
+        this.state = {
+            reviewList: [],
+            newReview: false
+        }
+    }
+
+    componentDidMount(){
+        this.reviewFetcher()
+    }
+
+    reviewFetcher = () => {
+        fetch('https://gitlitback.herokuapp.com/reviews/detailed')
+        .then(response => response.json())
+        .then(json => this.setState({reviewList: json.response}))
+    }
+
+
+    reviewToggle = () => {
+        this.setState({ newReview : !this.state.newReview})
+    }
+
     render() {
         return (
             <div>
@@ -31,18 +57,12 @@ class Profile extends Component {
                 </div>
                 <div className='barTitle'>
                     <h1>Bar Review</h1>
+                    <button onClick={this.reviewToggle}>New Review</button>
+                    {this.state.newReview ? <NewReview /> : ''}
                 </div>
-                <div className='profileBarReview'>
-                    <div className='barReview'>
-                        <p> Victor's</p>
-                        <p> This bar was soft as cake </p>
-                        <div>
-                            <i class='trash icon' />
-                            <Rating icon='star' defaultRating={1} maxRating={5} />
-                            <i class='fire icon' />
-                        </div>
-                    </div>
-                    <div className='barReview'>
+
+                    <ReviewList reviewList={this.state.reviewList}/>
+                    {/* <div className='barReview'>
                         <p> Jody's</p>
                         <p> This bar was Lit AF!!! </p>
                         <div>
@@ -59,8 +79,8 @@ class Profile extends Component {
                             <Rating icon='star' defaultRating={2} maxRating={5} />
                             <i class='fire icon' />
                         </div>
-                    </div>
-                </div>
+                    </div> */}
+
             </div>
         );
     }
