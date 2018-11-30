@@ -129,7 +129,7 @@ header {
 
 .barList {
     position: relative;
-    top: 40em;
+    top: 50em;
     display: flex;
     flex-wrap: wrap;
 }
@@ -201,5 +201,5 @@ header {
 
 .barName {
     font-weight: bold;
-    color: rgb(223, 148, 18)
+    color: rgb(223, 148, 18);
 }
