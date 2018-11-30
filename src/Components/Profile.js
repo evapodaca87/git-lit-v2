@@ -58,29 +58,9 @@ class Profile extends Component {
                 <div className='barTitle'>
                     <h1>Bar Review</h1>
                     <button onClick={this.reviewToggle}>New Review</button>
-                    {this.state.newReview ? <NewReview /> : ''}
+                    {this.state.newReview ? <NewReview reviewFetcher={this.reviewFetcher}/> : ''}
                 </div>
-
                     <ReviewList reviewList={this.state.reviewList}/>
-                    {/* <div className='barReview'>
-                        <p> Jody's</p>
-                        <p> This bar was Lit AF!!! </p>
-                        <div>
-                            <i class='trash icon' />
-                            <Rating icon='star' defaultRating={5} maxRating={5} />
-                            <i class='fire icon' />
-                        </div>
-                    </div>
-                    <div className='barReview'>
-                        <p> Matt's</p>
-                        <p> Hard Pass </p>
-                        <div>
-                            <i class='trash icon' />
-                            <Rating icon='star' defaultRating={2} maxRating={5} />
-                            <i class='fire icon' />
-                        </div>
-                    </div> */}
-
             </div>
         );
     }

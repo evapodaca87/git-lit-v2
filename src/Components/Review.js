@@ -11,6 +11,7 @@ const Review = ({review}) => {
     return (
       <div className='barReview'>
         <p>{review.username} </p>
+        <p>{review.name}</p>
         <p> {review.comment} </p>
         <div>
           <i class='trash icon' />
