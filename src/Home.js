@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './App.css';
 import GoogleMapsContainer from './Components/GoogleMapsContainer.js'
 import { Button } from 'semantic-ui-react'
+
 
 
 class Home extends Component {
@@ -55,7 +57,9 @@ class Home extends Component {
                         src='https://files.slack.com/files-pri/T1T555TL0-FEBL8TWRX/screen_shot_2018-11-26_at_11.26.57_am.png'
                     />
                 </header>
+
                 {showMap && <GoogleMapsContainer initialCenter={this.state.initialCenter} />}
+
         </div>
         
         )
@@ -63,3 +67,4 @@ class Home extends Component {
 }
 
 export default Home
+

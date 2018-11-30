@@ -95,3 +95,34 @@ header {
     font-weight: bold;
     color: rgb(223, 148, 18)
 }
+
+
+
+.fire{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Profilecontainer{
+background-color: black;
+color: White;
+font-size: 3em;
+height: 20%;
+
+}
+
+.sliderClass{
+  display: flex;
+  justify-content: center;
+}
+
+.active.icon{
+  color: red;
+}
+
+.test{
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
