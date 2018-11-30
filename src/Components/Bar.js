@@ -10,8 +10,9 @@ const Bar = ({ bar }) => {
                       <p> {bar.props.address} </p>
                       <p>{bar.props.openNow ? "Open" : "Closed"}</p>
                       <div className="rating">
-                        <img className='tinyFire'src='/fire2.png'></img>
+                        <img className='tinyFire'src='/fire1.png'></img>
                         <Rating class="fire icon" defaultRating={Math.round(bar.props.rating)} maxRating={5} />
+                        <img className='tinyFire'src='/fire2.png'></img>
                     </div>
         </div>
     )

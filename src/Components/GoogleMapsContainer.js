@@ -38,7 +38,7 @@ onMapClick = (props) => {
   }
 }
 
-  fetchPlaces = (mapProps, map) => {
+  fetchPlaces = () => {
     const context = this
     const lat = this.props.initialCenter.lat
     const lng = this.props.initialCenter.lng
